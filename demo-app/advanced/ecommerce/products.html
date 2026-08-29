@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><title>Products</title><style>body{font:16px system-ui;margin:40px}.product{display:inline-block;vertical-align:top;width:210px;padding:16px;margin:8px;border:1px solid #ccd6e0;border-radius:8px}button,a{padding:8px 12px}#cart-count{font-weight:700}</style></head>
+<body><nav><a id="cart-link" href="cart.html">Cart (<span id="cart-count">0</span>)</a></nav><h1>Products</h1>
+<article id="product-keyboard" class="product" data-sku="keyboard"><h2>Keyboard</h2><p>$49.00</p><button id="add-keyboard" data-product="Keyboard" data-price="49" type="button">Add to cart</button></article>
+<article id="product-mouse" class="product" data-sku="mouse"><h2>Mouse</h2><p>$29.00</p><button id="add-mouse" data-product="Mouse" data-price="29" type="button">Add to cart</button></article>
+<p id="product-feedback" aria-live="polite"></p>
+<script>
+function cart(){return JSON.parse(localStorage.getItem("demo-cart")||"[]")}function update(){document.querySelector("#cart-count").textContent=cart().length}
+document.querySelectorAll("[data-product]").forEach(b=>b.onclick=()=>{const items=cart();items.push({name:b.dataset.product,price:Number(b.dataset.price)});localStorage.setItem("demo-cart",JSON.stringify(items));update();document.querySelector("#product-feedback").textContent=b.dataset.product+" added to cart"});update();
+</script></body></html>

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><title>Slow Page</title><style>body{font:16px system-ui;margin:40px}.panel{padding:16px;border:1px solid #ccd6e0;margin:12px 0}.hidden{display:none}</style></head>
+<body><h1>Synchronization Practice</h1><p>All delays are deterministic, so the tests are repeatable.</p>
+<div class="panel"><p id="delayed" class="hidden">Delayed content loaded after 3 seconds</p></div>
+<div class="panel"><button id="reveal-button" type="button">Reveal Hidden Text</button><p id="hidden-text" class="hidden">Now visible after 1.5 seconds</p></div>
+<div class="panel"><p id="ajax-content">Loading simulated AJAX content…</p><span id="spinner">Loading</span></div>
+<script>
+setTimeout(()=>document.querySelector("#delayed").classList.remove("hidden"),3000);
+document.querySelector("#reveal-button").onclick=()=>setTimeout(()=>document.querySelector("#hidden-text").classList.remove("hidden"),1500);
+setTimeout(()=>{document.querySelector("#ajax-content").textContent="AJAX content loaded";document.querySelector("#spinner").hidden=true},2000);
+</script></body></html>

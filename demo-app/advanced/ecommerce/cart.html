@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><title>Cart</title><style>body{font:16px system-ui;margin:40px}li{margin:8px 0}.total{font-weight:700}</style></head>
+<body><nav><a id="products-link" href="products.html">Continue shopping</a></nav><h1>Your cart</h1><ul id="cart-items"></ul><p id="empty-cart" hidden>Your cart is empty.</p><p id="cart-total" class="total">Total: $0.00</p><button id="clear-cart" type="button">Clear cart</button><a id="checkout-link" href="checkout.html">Checkout</a>
+<script>
+function cart(){return JSON.parse(localStorage.getItem("demo-cart")||"[]")}function render(){const items=cart(),list=document.querySelector("#cart-items");list.innerHTML=items.map((x,i)=>"<li id='cart-item-"+i+"'>"+x.name+" — $"+x.price.toFixed(2)+" <button data-remove='"+i+"'>Remove</button></li>").join("");document.querySelector("#empty-cart").hidden=items.length>0;document.querySelector("#cart-total").textContent="Total: $"+items.reduce((n,x)=>n+x.price,0).toFixed(2);document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{const a=cart();a.splice(Number(b.dataset.remove),1);localStorage.setItem("demo-cart",JSON.stringify(a));render()})}document.querySelector("#clear-cart").onclick=()=>{localStorage.removeItem("demo-cart");render()};render();
+</script></body></html>

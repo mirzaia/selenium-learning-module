@@ -1,0 +1,4 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><style>body{font:16px system-ui;padding:16px}.nested{width:390px;height:90px}</style></head><body>
+<h2 id="frame-heading">Inside the iframe</h2><label for="frame-input">Frame input</label><input id="frame-input" placeholder="Frame input"><button id="frame-button">Click frame</button><p id="frame-result"></p>
+<iframe id="nested-frame" class="nested" srcdoc="&lt;button id='nested-button' onclick=&quot;document.querySelector('#nested-result').textContent='Nested clicked'&quot;&gt;Nested action&lt;/button&gt;&lt;p id='nested-result'&gt;&lt;/p&gt;"></iframe>
+<script>document.querySelector("#frame-button").onclick=()=>document.querySelector("#frame-result").textContent="Clicked";</script></body></html>

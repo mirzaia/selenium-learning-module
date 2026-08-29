@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><title>Registration Form</title>
+<style>body{font:16px system-ui;margin:40px;max-width:620px}label{display:block;margin-top:13px}input,select,button{padding:8px;margin-top:4px;width:100%;box-sizing:border-box}.inline{display:inline;margin-right:18px}.hidden{display:none}.success{color:#087f23}.error{color:#b42318}</style>
+</head><body>
+<h1>Registration</h1>
+<form id="registration-form" novalidate>
+  <label for="full-name">Name:</label><input id="full-name" name="fullName" required>
+  <label for="email">Email:</label><input id="email" name="email" type="email" required>
+  <label for="country">Country:</label><select id="country" name="country"><option value="">-- Select --</option><option value="id">Indonesia</option><option value="jp">Japan</option><option value="sg">Singapore</option></select>
+  <fieldset><legend>Role</legend><label class="inline"><input id="role-engineer" type="radio" name="role" value="engineer"> Engineer</label><label class="inline"><input id="role-manager" type="radio" name="role" value="manager"> Manager</label></fieldset>
+  <label class="inline" for="terms"><input id="terms" type="checkbox"> I agree to terms</label>
+  <input id="disabled-input" value="Unavailable field" disabled><input id="hidden-input" class="hidden" value="Hidden field">
+  <button id="submit-form" type="submit">Submit</button>
+</form>
+<p id="form-error" class="error" aria-live="polite"></p><p id="success-message" class="success" hidden aria-live="polite">Registration successful</p>
+<script>document.querySelector("#registration-form").onsubmit=e=>{e.preventDefault();const name=document.querySelector("#full-name"),email=document.querySelector("#email"),terms=document.querySelector("#terms");const error=document.querySelector("#form-error");if(!name.value||!email.value||!terms.checked){error.textContent="Name, email, and terms acceptance are required";return}error.textContent="";document.querySelector("#success-message").hidden=false}</script>
+</body></html>

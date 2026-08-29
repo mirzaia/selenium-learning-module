@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><title>Login</title><style>body{font:16px system-ui;margin:40px;max-width:420px}label,input,button{display:block;width:100%;box-sizing:border-box;margin:8px 0}input,button{padding:9px}.error{color:#b42318}</style></head>
+<body><nav id="navigation"><a id="home-link" href="../index.html">Demo home</a></nav><h1>Sign in</h1>
+<form id="login-form"><label for="username">Username</label><input id="username" name="username" autocomplete="username" placeholder="Username"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Password"><button id="login-button" type="submit">Login</button></form>
+<p id="login-error" class="error" role="alert"></p><p>Valid credentials: <code>learner</code> / <code>selenium</code></p>
+<script>document.querySelector("#login-form").onsubmit=e=>{e.preventDefault();const u=document.querySelector("#username").value,p=document.querySelector("#password").value;if(u==="learner"&&p==="selenium"){sessionStorage.setItem("demo-user",u);location.href="dashboard.html"}else document.querySelector("#login-error").textContent="Invalid credentials"}</script>
+</body></html>

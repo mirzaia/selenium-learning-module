@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><title>Advanced Actions</title><style>body{font:16px system-ui;margin:40px}.zone,.card{display:inline-block;padding:35px;margin:12px;border:2px dashed #357edd;border-radius:8px}.zone{min-width:180px}.card{background:#eaf3ff;cursor:grab}.menu{position:relative;display:inline-block}.submenu{display:none;position:absolute;top:100%;background:#fff;border:1px solid #aaa;padding:10px}.menu:hover .submenu{display:block}.selected{background:#ffe5a5}.context-menu{display:none;position:absolute;background:white;border:1px solid #555;padding:8px}</style></head>
+<body><h1>Actions Practice</h1><div class="menu" id="menu-trigger">Hover menu<div id="submenu" class="submenu">Submenu is visible</div></div>
+<p><button id="double-click-target" type="button">Double click me</button> <span id="double-click-result"></span></p>
+<div id="source" class="card" draggable="true">Drag me</div><div id="target" class="zone">Drop here</div><p id="drop-result"></p>
+<div id="multi-select"><button class="selectable" id="select-a">A</button><button class="selectable" id="select-b">B</button><button class="selectable" id="select-c">C</button></div>
+<div id="context-target" class="card">Right click me</div><div id="context-menu" class="context-menu">Context menu opened</div>
+<script>
+const source=document.querySelector("#source"),target=document.querySelector("#target");source.ondragstart=e=>e.dataTransfer.setData("text/plain","source");target.ondragover=e=>e.preventDefault();target.ondrop=e=>{e.preventDefault();target.textContent="Dropped";document.querySelector("#drop-result").textContent="Drop complete"};
+document.querySelector("#double-click-target").ondblclick=()=>document.querySelector("#double-click-result").textContent="Double-click detected";
+document.querySelectorAll(".selectable").forEach(b=>b.onclick=e=>{if(!e.shiftKey)document.querySelectorAll(".selectable").forEach(x=>x.classList.remove("selected"));b.classList.toggle("selected")});
+document.querySelector("#context-target").oncontextmenu=e=>{e.preventDefault();const menu=document.querySelector("#context-menu");menu.style.display="block";menu.style.left=e.pageX+"px";menu.style.top=e.pageY+"px"};
+</script></body></html>

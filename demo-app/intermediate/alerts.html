@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><title>Alerts and Dialogs</title><style>body{font:16px system-ui;margin:40px}button{margin:8px;padding:9px}#dialog-state{font-weight:600}</style></head>
+<body><h1>Browser Dialog Practice</h1><p>Browser dialogs are not DOM elements; Selenium must switch to them.</p>
+<button id="simple-alert" type="button">Open alert</button><button id="confirm-dialog" type="button">Open confirm</button><button id="prompt-dialog" type="button">Open prompt</button>
+<p id="dialog-state" aria-live="polite">No dialog handled yet</p>
+<script>
+document.querySelector("#simple-alert").onclick=()=>alert("Hello from alert");
+document.querySelector("#confirm-dialog").onclick=()=>document.querySelector("#dialog-state").textContent=confirm("Continue?")?"Confirmed":"Dismissed";
+document.querySelector("#prompt-dialog").onclick=()=>{const value=prompt("Your name?");document.querySelector("#dialog-state").textContent=value===null?"Prompt dismissed":"Hello, "+value};
+</script></body></html>

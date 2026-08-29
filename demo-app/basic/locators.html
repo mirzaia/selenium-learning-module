@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Locator Practice</title>
+  <style>body{font:16px system-ui;margin:40px;max-width:760px}section{padding:18px;margin:16px 0;border:1px solid #d8dee9;border-radius:8px}.item{padding:5px}.notice{color:#125f34}</style>
+</head>
+<body>
+  <h1 id="page-heading">Locator Practice</h1>
+  <p>Every exercise target has a stable ID, name, or data-testid.</p>
+  <section>
+    <button id="action-button" data-testid="action-button" type="button">Click Action</button>
+    <p id="action-status" data-testid="result-area" class="notice">Waiting for an action</p>
+  </section>
+  <section>
+    <label for="search-input">Search</label>
+    <input id="search-input" name="search" placeholder="Search here">
+    <a id="form-link" href="form.html">Go to Form</a>
+  </section>
+  <section><h2>Items</h2><ul id="item-list" class="item-list">
+    <li class="item" data-position="1">One</li><li class="item" data-position="2">Two</li><li class="item" data-position="3">Three</li>
+  </ul></section>
+  <script>document.querySelector("#action-button").onclick=()=>document.querySelector("#action-status").textContent="Action completed";</script>
+</body></html>
